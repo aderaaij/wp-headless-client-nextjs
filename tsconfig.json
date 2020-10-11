@@ -1,0 +1,47 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "esnext",
+    "jsx": "preserve",
+    "allowJs": true,
+    "strict": true,
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "removeComments": true,
+    "preserveConstEnums": true,
+    "sourceMap": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "baseUrl": "./src/",
+    "typeRoots": ["./node_modules/@types", "./types", "./next-env.d.ts"],
+    "lib": ["dom", "es2017"],
+    "paths": {
+      "@components/*": ["components/*"],
+      "@pages/*": ["pages/*"],
+      "@graphql/*": ["graphql/*"],
+      "@interfaces/*": ["interfaces/*"],
+      "@api/*": ["api/*"],
+      "@lib/*": ["lib/*"]
+    },
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true
+  },
+  "exclude": [
+    "dist",
+    ".next",
+    "out",
+    "node_modules",
+    "next.config.js",
+    "postcss.config.js",
+    "**/*.spec.ts",
+    "**/*.spec.tsx",
+    "**/*.test.ts",
+    "**/*.test.tsx",
+    "coverage"
+  ],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "config/constants.js"]
+}
