@@ -1,10 +1,11 @@
 import Container from '@components/Container';
 import cn from 'classnames';
+import { ReactElement } from 'react';
 
 interface Props {
   preview: boolean;
 }
-export default function Alert({ preview }: Props) {
+export default function Alert({ preview }: Props): ReactElement<Props> {
   return (
     <div
       className={cn('border-b', {
@@ -29,7 +30,7 @@ export default function Alert({ preview }: Props) {
             <>
               The source code for this blog is{' '}
               <a
-                href={`https://github.com/zeit/next.js/tree/canary/examples/${process.env.EXAMPLE_PATH}`}
+                href="https://github.com/aderaaij/nextjs-wordpress-typescript"
                 className="underline hover:text-success duration-200 transition-colors"
               >
                 available on GitHub

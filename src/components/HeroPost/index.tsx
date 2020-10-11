@@ -2,15 +2,14 @@ import Link from 'next/link';
 import Avatar from '@components/Avatar';
 import Date from '@components/Date';
 import CoverImage from '@components/CoverImage';
-import { FeaturedImage } from '@interfaces/FeaturedImage';
-import { AuthorTeaser } from '@interfaces/Author';
+import { MediaItem, NodeWithAuthorToUserConnectionEdge } from 'types';
 
 interface Props {
   title: string;
-  coverImage: FeaturedImage['node'];
+  coverImage: MediaItem;
   date: string;
   excerpt: string;
-  author: AuthorTeaser['node'];
+  author: NodeWithAuthorToUserConnectionEdge['node'];
   slug: string;
 }
 

@@ -1,7 +1,7 @@
-import { AuthorTeaser } from '@interfaces/Author';
+import { NodeWithAuthorToUserConnectionEdge } from 'types';
 
 interface Props {
-  author: AuthorTeaser['node'];
+  author: NodeWithAuthorToUserConnectionEdge['node'];
 }
 
 export default function Avatar({ author }: Props) {

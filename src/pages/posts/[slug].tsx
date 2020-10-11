@@ -11,13 +11,11 @@ import Layout from '@components/Layout';
 import PostTitle from '@components/PostTitle';
 import Tags from '@components/Tags';
 import { getAllPostsWithSlug, getPostAndMorePosts } from '@lib/api';
-import { Post as PostType, PostTeasers } from '@interfaces/Post';
-
+import { CategoryToPostConnection, Post as GeneratedPostType } from 'types';
+import { Post as PostType } from 'types';
 interface Props {
-  post: PostType;
-  posts: {
-    edges: any[];
-  };
+  post: GeneratedPostType;
+  posts?: CategoryToPostConnection;
   preview: boolean;
 }
 export default function Post({ post, posts, preview }: Props) {
@@ -49,9 +47,9 @@ export default function Post({ post, posts, preview }: Props) {
               </Head>
               <PostHeader
                 title={post.title}
-                coverImage={post.featuredImage.node}
+                coverImage={post.featuredImage?.node}
                 date={post.date}
-                author={post.author.node}
+                author={post.author?.node}
                 categories={post.categories}
               />
               <PostBody content={post.content} />
@@ -73,7 +71,7 @@ interface StaticProps {
   props: {
     preview: boolean;
     post: PostType;
-    posts: PostTeasers;
+    posts: CategoryToPostConnection;
   };
 }
 
@@ -102,7 +100,7 @@ export async function getStaticProps({
 }
 
 interface StaticPaths {
-  paths: string[] | [];
+  paths: (string | undefined)[] | [];
   fallback: boolean;
 }
 
@@ -110,7 +108,12 @@ export async function getStaticPaths(): Promise<StaticPaths> {
   const allPosts = await getAllPostsWithSlug();
 
   return {
-    paths: allPosts.edges.map(({ node }) => `/posts/${node.slug}`) || [],
+    paths:
+      allPosts.edges.map(({ node }) => {
+        if (node) {
+          return `/posts/${node.slug}`;
+        }
+      }) || [],
     fallback: true,
   };
 }

@@ -1,4 +1,5 @@
-import { getPreviewPost, IdType } from '~/';
+import { getPreviewPost } from '@lib/api';
+import { PostFormatIdType } from 'types';
 
 export default async function preview(req: any, res: any): Promise<any> {
   const { secret, id, slug } = req.query;
@@ -16,7 +17,7 @@ export default async function preview(req: any, res: any): Promise<any> {
   // Fetch WordPress to check if the provided `id` or `slug` exists
   const post = await getPreviewPost(
     id || slug,
-    id ? IdType.DATABASE_ID : IdType.SLUG
+    id ? PostFormatIdType.DatabaseId : PostFormatIdType.Slug
   );
 
   // If the post doesn't exist prevent preview mode from being enabled

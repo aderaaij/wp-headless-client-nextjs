@@ -1,6 +1,6 @@
 interface Category {
-  node: {
-    name: string;
+  node?: {
+    name?: string;
   };
 }
 
@@ -17,11 +17,11 @@ export default function Categories({ categories }: Props) {
       {categories.edges.length > 0 ? (
         categories.edges.map((category, index) => (
           <span key={index} className="ml-1">
-            {category.node.name}
+            {category?.node.name}
           </span>
         ))
       ) : (
-        <span className="ml-1">{categories.edges[0].node.name}</span>
+        <span className="ml-1">Whatevs</span>
       )}
     </span>
   );

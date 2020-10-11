@@ -1,12 +1,8 @@
-import { PostTeaser } from '@interfaces/Post';
 import PostPreview from '@components/PostPreview';
-
-interface Post {
-  node: PostTeaser;
-}
+import { CategoryToPostConnection } from 'types';
 
 interface Props {
-  posts: Array<Post>;
+  posts: CategoryToPostConnection['edges'];
 }
 export default function MoreStories({ posts }: Props) {
   return (

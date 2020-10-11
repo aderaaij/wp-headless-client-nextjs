@@ -1,11 +1,11 @@
-export const allPostsWithSlug = `
-{
-  posts(first: 10000) {
-    edges {
-      node {
-        slug
+export const allPostsWithSlug = /* GraphQL */ `
+  {
+    posts(first: 10000) {
+      edges {
+        node {
+          slug
+        }
       }
     }
   }
-}
 `;

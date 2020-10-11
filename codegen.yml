@@ -1,4 +1,12 @@
+schema: http://loc.cfye.com/wp/graphql
+documents:
+  - './src/graphql/**/*.ts'
 generates:
-  types.ts:
+  ./src/types.ts:
     plugins:
       - typescript
+pluckConfig:
+  gqlMagicComment: GraphQL
+  globalGqlIdentifierName:
+    - gql
+    - graphql

@@ -4,8 +4,8 @@ import { allPostsForHome } from '@graphql/queries/allPostsForHome';
 import { AuthorFields } from '@graphql/fragments/AuthorFields';
 import { postBySlug } from '@graphql/queries/postBySlug';
 import { PostFields } from '@graphql/fragments/PostFields';
-import { PostTeasers, PostAndMorePosts } from '@interfaces/Post';
-import { PostIdType, PostIdTypeUnion } from '@interfaces/PostIdType';
+import { PostAndMorePosts } from '@interfaces/PostAndMorePosts';
+import { CategoryToPostConnection, PostFormatIdType } from 'types';
 
 const API_URL = process.env.WORDPRESS_API_URL;
 
@@ -16,7 +16,7 @@ enum PreviewStatus {
 
 interface Variables {
   id?: string;
-  idType?: PostIdTypeUnion;
+  idType?: PostFormatIdType;
   onlyEnabled?: boolean;
   preview?: boolean;
 }
@@ -60,7 +60,7 @@ async function fetchAPI(
 
 export async function getPreviewPost(
   id: string,
-  idType = PostIdType.DATABASE_ID
+  idType = PostFormatIdType.DatabaseId
 ) {
   const data = await fetchAPI(previewPost, {
     variables: { id, idType },
@@ -84,7 +84,7 @@ export async function getAllPostsWithSlug(): Promise<AllPostsWithSlug> {
 
 export async function getAllPostsForHome(
   preview: boolean
-): Promise<PostTeasers> {
+): Promise<CategoryToPostConnection> {
   const data = await fetchAPI(allPostsForHome, {
     variables: {
       onlyEnabled: !preview,
@@ -112,7 +112,7 @@ export async function getPostAndMorePosts(
   const data = await fetchAPI(query, {
     variables: {
       id: isDraft ? postPreview.id : slug,
-      idType: isDraft ? PostIdType.DATABASE_ID : PostIdType.SLUG,
+      idType: isDraft ? PostFormatIdType.DatabaseId : PostFormatIdType.Slug,
     },
   });
 

@@ -1,10 +1,10 @@
 import cn from 'classnames';
 import Link from 'next/link';
-import { FeaturedImage } from '@interfaces/FeaturedImage';
+import { MediaItem } from 'types';
 
 interface Props {
   title: string;
-  coverImage: FeaturedImage['node'];
+  coverImage: MediaItem;
   slug?: string;
 }
 

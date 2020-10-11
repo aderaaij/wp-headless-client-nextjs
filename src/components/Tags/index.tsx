@@ -1,14 +1,9 @@
-interface Tag {
-  node: {
-    name: string;
-  };
-}
+import { PostToTagConnection } from 'types';
 
 interface Props {
-  tags: {
-    edges: Array<Tag>;
-  };
+  tags: PostToTagConnection;
 }
+
 export default function Tags({ tags }: Props) {
   return (
     <div className="max-w-2xl mx-auto">
