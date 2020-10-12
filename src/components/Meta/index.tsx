@@ -1,6 +1,6 @@
 import Head from 'next/head';
 
-export default function Meta() {
+const Meta: React.FC = () => {
   return (
     <Head>
       <link
@@ -38,4 +38,5 @@ export default function Meta() {
       <meta property="og:image" content={process.env.HOME_OG_IMAGE_URL} />
     </Head>
   );
-}
+};
+export default Meta;

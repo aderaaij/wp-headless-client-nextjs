@@ -18,7 +18,8 @@ interface Props {
   posts?: CategoryToPostConnection;
   preview: boolean;
 }
-export default function Post({ post, posts, preview }: Props) {
+
+export const Post: React.FC<Props> = ({ post, posts, preview }: Props) => {
   const router = useRouter();
   const morePosts = posts?.edges;
 
@@ -65,7 +66,7 @@ export default function Post({ post, posts, preview }: Props) {
       </Container>
     </Layout>
   );
-}
+};
 
 interface StaticProps {
   props: {

@@ -1,16 +1,10 @@
-interface Category {
-  node?: {
-    name?: string;
-  };
-}
+import { PostToCategoryConnection } from 'types';
 
 interface Props {
-  categories: {
-    edges: Array<Category>;
-  };
+  categories: PostToCategoryConnection;
 }
 
-export default function Categories({ categories }: Props) {
+const Categories: React.FC<Props> = ({ categories }) => {
   return (
     <span className="ml-1">
       under
@@ -25,4 +19,5 @@ export default function Categories({ categories }: Props) {
       )}
     </span>
   );
-}
+};
+export default Categories;

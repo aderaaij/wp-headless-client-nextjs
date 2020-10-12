@@ -1,10 +1,10 @@
-import { NodeWithAuthorToUserConnectionEdge } from 'types';
+import { User } from 'types';
 
 interface Props {
-  author: NodeWithAuthorToUserConnectionEdge['node'];
+  author: User;
 }
 
-export default function Avatar({ author }: Props) {
+const Avatar: React.FC<Props> = ({ author }) => {
   const name =
     author.firstName && author.lastName
       ? `${author.firstName} ${author.lastName}`
@@ -20,4 +20,5 @@ export default function Avatar({ author }: Props) {
       <div className="text-xl font-bold">{name}</div>
     </div>
   );
-}
+};
+export default Avatar;

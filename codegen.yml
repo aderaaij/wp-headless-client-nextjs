@@ -1,8 +1,8 @@
-schema: http://loc.cfye.com/wp/graphql
+schema: ${SCHEMA_URL}
 documents:
   - './src/graphql/**/*.ts'
 generates:
-  ./src/types.ts:
+  ./src/types.d.ts:
     plugins:
       - typescript
 pluckConfig:

@@ -4,7 +4,7 @@ import { CategoryToPostConnection } from 'types';
 interface Props {
   posts: CategoryToPostConnection['edges'];
 }
-export default function MoreStories({ posts }: Props) {
+const MoreStories: React.FC<Props> = ({ posts }) => {
   return (
     <section>
       <h2 className="mb-8 text-6xl md:text-7xl font-bold tracking-tighter leading-tight">
@@ -25,4 +25,5 @@ export default function MoreStories({ posts }: Props) {
       </div>
     </section>
   );
-}
+};
+export default MoreStories;

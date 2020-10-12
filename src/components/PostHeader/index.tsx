@@ -3,21 +3,22 @@ import Date from '@components/Date';
 import CoverImage from '@components/CoverImage';
 import PostTitle from '@components/PostTitle';
 import Categories from '@components/Categories';
+import { MediaItem, PostToCategoryConnection, User } from 'types';
 
 interface Props {
   title: string;
-  coverImage?: any;
+  coverImage?: MediaItem;
   date: string;
-  author?: any;
-  categories?: any;
+  author?: User;
+  categories?: PostToCategoryConnection;
 }
-export default function PostHeader({
+const PostHeader: React.FC<Props> = ({
   title,
   coverImage,
   date,
   author,
   categories,
-}: Props) {
+}) => {
   return (
     <>
       <PostTitle>{title}</PostTitle>
@@ -44,4 +45,5 @@ export default function PostHeader({
       </div>
     </>
   );
-}
+};
+export default PostHeader;

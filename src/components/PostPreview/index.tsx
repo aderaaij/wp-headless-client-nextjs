@@ -2,25 +2,25 @@ import Link from 'next/link';
 import Avatar from '@components/Avatar';
 import Date from '@components/Date';
 import CoverImage from '@components/CoverImage';
-import { MediaItem } from 'types';
+import { MediaItem, User } from 'types';
 
 interface Props {
   title: string;
   coverImage: MediaItem;
   date: string;
   excerpt: string;
-  author: any;
+  author: User;
   slug: string;
 }
 
-export default function PostPreview({
+const PostPreview: React.FC<Props> = ({
   title,
   coverImage,
   date,
   excerpt,
   author,
   slug,
-}: Props) {
+}) => {
   return (
     <div>
       <div className="mb-5">
@@ -44,4 +44,5 @@ export default function PostPreview({
       <Avatar author={author} />
     </div>
   );
-}
+};
+export default PostPreview;

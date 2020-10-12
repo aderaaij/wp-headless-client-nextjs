@@ -5,13 +5,14 @@ import HeroPost from '@components/HeroPost';
 import Intro from '@components/Intro';
 import Layout from '@components/Layout';
 import { getAllPostsForHome } from '@lib/api';
+import { CategoryToPostConnection } from 'types';
 
 export interface Props {
-  allPosts: any;
+  allPosts: CategoryToPostConnection;
   preview: boolean;
 }
 
-export default function Index({ allPosts: { edges }, preview }: Props) {
+const Index: React.FC<Props> = ({ allPosts: { edges }, preview }: Props) => {
   const heroPost = edges[0]?.node;
   const morePosts = edges.slice(1);
 
@@ -38,11 +39,18 @@ export default function Index({ allPosts: { edges }, preview }: Props) {
       </Layout>
     </>
   );
-}
+};
 
-export async function getStaticProps({ preview = false }) {
+export default Index;
+
+interface StaticProps {
+  props: Props;
+}
+export const getStaticProps = async ({
+  preview = false,
+}: Record<'preview', boolean>): Promise<StaticProps> => {
   const allPosts = await getAllPostsForHome(preview);
   return {
     props: { allPosts, preview },
   };
-}
+};

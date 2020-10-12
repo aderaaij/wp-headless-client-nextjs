@@ -8,7 +8,7 @@ interface Props {
   slug?: string;
 }
 
-export default function CoverImage({ title, coverImage, slug }: Props) {
+const CoverImage: React.FC<Props> = ({ title, coverImage, slug }) => {
   const image = (
     <img
       src={coverImage?.sourceUrl}
@@ -28,4 +28,5 @@ export default function CoverImage({ title, coverImage, slug }: Props) {
       )}
     </div>
   );
-}
+};
+export default CoverImage;

@@ -13,14 +13,14 @@ interface Props {
   slug: string;
 }
 
-export default function HeroPost({
+const HeroPost: React.FC<Props> = ({
   title,
   coverImage,
   date,
   excerpt,
   author,
   slug,
-}: Props) {
+}) => {
   return (
     <section>
       <div className="mb-8 md:mb-16">
@@ -50,4 +50,5 @@ export default function HeroPost({
       </div>
     </section>
   );
-}
+};
+export default HeroPost;
