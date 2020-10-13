@@ -27,7 +27,7 @@ const Index: React.FC<Props> = ({ allPosts: { edges }, preview }: Props) => {
           {heroPost && (
             <HeroPost
               title={heroPost.title}
-              coverImage={heroPost.featuredImage.node}
+              coverImage={heroPost.featuredImage?.node}
               date={heroPost.date}
               author={heroPost.author.node}
               slug={heroPost.slug}
