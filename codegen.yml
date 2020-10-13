@@ -2,7 +2,7 @@ schema: ${WORDPRESS_API_URL}
 documents:
   - './src/graphql/**/*.ts'
 generates:
-  ./src/types.d.ts:
+  ./src/types.ts:
     plugins:
       - typescript
 pluckConfig:

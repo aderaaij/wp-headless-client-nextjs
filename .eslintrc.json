@@ -29,7 +29,7 @@
         "eslint-config-prettier/@typescript-eslint"
       ],
       "rules": {
-        "@typescript-eslint/explicit-module-boundary-types": [0],
+        "@typescript-eslint/explicit-module-boundary-types": "off",
         "@typescript-eslint/explicit-function-return-type": [
           "warn",
           {
