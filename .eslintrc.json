@@ -22,9 +22,6 @@
     {
       "files": "**/*.+(ts|tsx)",
       "parser": "@typescript-eslint/parser",
-      "parserOptions": {
-        "project": "./tsconfig.json"
-      },
       "plugins": ["@typescript-eslint/eslint-plugin"],
       "extends": [
         "plugin:@typescript-eslint/eslint-recommended",
@@ -32,16 +29,17 @@
         "eslint-config-prettier/@typescript-eslint"
       ],
       "rules": {
+        "@typescript-eslint/explicit-module-boundary-types": [0],
         "@typescript-eslint/explicit-function-return-type": [
           "warn",
           {
             "allowExpressions": true
           }
         ],
-        // "no-use-before-define": [0],
-        // "@typescript-eslint/no-use-before-define": [1],
-        // "@typescript-eslint/no-explicit-any": "off",
-        // "@typescript-eslint/no-var-requires": "off",
+        "no-use-before-define": [0],
+        "@typescript-eslint/no-use-before-define": [1],
+        "@typescript-eslint/no-explicit-any": "off",
+        "@typescript-eslint/no-var-requires": "off",
         "@typescript-eslint/quotes": [
           2,
           "single",

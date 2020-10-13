@@ -1,4 +1,4 @@
-schema: ${SCHEMA_URL}
+schema: ${WORDPRESS_API_URL}
 documents:
   - './src/graphql/**/*.ts'
 generates:

@@ -5,7 +5,7 @@ import { AuthorFields } from '@graphql/fragments/AuthorFields';
 import { postBySlug } from '@graphql/queries/postBySlug';
 import { PostFields } from '@graphql/fragments/PostFields';
 import { PostAndMorePosts } from '@interfaces/PostAndMorePosts';
-import { CategoryToPostConnection, PostFormatIdType } from 'types';
+import { CategoryToPostConnection, Post, PostFormatIdType } from 'types';
 
 const API_URL = process.env.WORDPRESS_API_URL;
 
@@ -61,7 +61,7 @@ async function fetchAPI(
 export async function getPreviewPost(
   id: string,
   idType = PostFormatIdType.DatabaseId
-) {
+): Promise<Post> {
   const data = await fetchAPI(previewPost, {
     variables: { id, idType },
   });

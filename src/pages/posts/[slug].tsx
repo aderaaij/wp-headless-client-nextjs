@@ -19,7 +19,7 @@ interface Props {
   preview: boolean;
 }
 
-export const Post: React.FC<Props> = ({ post, posts, preview }: Props) => {
+const Post: React.FC<Props> = ({ post, posts, preview }: Props) => {
   const router = useRouter();
   const morePosts = posts?.edges;
 
@@ -67,6 +67,8 @@ export const Post: React.FC<Props> = ({ post, posts, preview }: Props) => {
     </Layout>
   );
 };
+
+export default Post;
 
 interface StaticProps {
   props: {
