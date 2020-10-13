@@ -1525,8 +1525,6 @@ export enum OrderEnum {
 
 /** The status of the object. */
 export enum PostStatusEnum {
-  /** Objects with the acf-disabled status */
-  AcfDisabled = 'ACF_DISABLED',
   /** Objects with the auto-draft status */
   AutoDraft = 'AUTO_DRAFT',
   /** Objects with the draft status */
@@ -2080,35 +2078,10 @@ export type User = Node &
      */
     id: Scalars['ID'];
     /**
-     * Whether the JWT User secret has been revoked. If the secret has been revoked, auth tokens will not be issued until an admin, or user with proper capabilities re-issues a secret for the user.
-     * @deprecated
-     */
-    isJwtAuthSecretRevoked: Scalars['Boolean'];
-    /**
      * Whether the object is restricted from the current viewer
      * @deprecated
      */
     isRestricted?: Maybe<Scalars['Boolean']>;
-    /**
-     * The expiration for the JWT Token for the user. If not set custom for the user, it will use the default sitewide expiration setting
-     * @deprecated
-     */
-    jwtAuthExpiration?: Maybe<Scalars['String']>;
-    /**
-     * A JWT token that can be used in future requests for authentication/authorization
-     * @deprecated
-     */
-    jwtAuthToken?: Maybe<Scalars['String']>;
-    /**
-     * A JWT token that can be used in future requests to get a refreshed jwtAuthToken. If the refresh token used in a request is revoked or otherwise invalid, a valid Auth token will NOT be issued in the response headers.
-     * @deprecated
-     */
-    jwtRefreshToken?: Maybe<Scalars['String']>;
-    /**
-     * A unique secret tied to the users JWT token that can be revoked or refreshed. Revoking the secret prevents JWT tokens from being issued to the user. Refreshing the token invalidates previously issued tokens, but allows new tokens to be issued.
-     * @deprecated
-     */
-    jwtUserSecret?: Maybe<Scalars['String']>;
     /**
      * Last name of the user. This is equivalent to the WP_User-&gt;user_last_name property.
      * @deprecated
@@ -4151,18 +4124,10 @@ export enum MediaItemSizeEnum {
   MediumLarge = 'MEDIUM_LARGE',
   /** MediaItem with the thumbnail size */
   Thumbnail = 'THUMBNAIL',
-  /** MediaItem with the _100x100 size */
-  _100X100 = '_100X100',
   /** MediaItem with the 1536x1536 size */
   _1536X1536 = '_1536X1536',
-  /** MediaItem with the _1600x1067 size */
-  _1600X1067 = '_1600X1067',
-  /** MediaItem with the _1600x1600 size */
-  _1600X1600 = '_1600X1600',
   /** MediaItem with the 2048x2048 size */
   _2048X2048 = '_2048X2048',
-  /** MediaItem with the _900x600 size */
-  _900X600 = '_900X600',
 }
 
 /** Connection between the ContentNode type and the User type */
@@ -5538,8 +5503,7 @@ export type PostToPostFormatConnectionEdge = {
 export type PostFormat = Node &
   TermNode &
   UniformResourceIdentifiable &
-  DatabaseIdentifier &
-  MenuItemLinkable & {
+  DatabaseIdentifier & {
     __typename?: 'PostFormat';
     /**
      * The number of objects connected to the object
@@ -6640,7 +6604,7 @@ export type MenuMenuItemsArgs = {
 
 /** Registered menu locations */
 export enum MenuLocationEnum {
-  HeaderMenu = 'HEADER_MENU',
+  Empty = 'EMPTY',
 }
 
 /** Arguments for filtering the MenuToMenuItemConnection connection */
@@ -6860,7 +6824,7 @@ export type MenuItemToMenuItemLinkableConnectionEdge = {
 };
 
 /** Deprecated in favor of MenuItemLinkeable Interface */
-export type MenuItemObjectUnion = Post | Page | Category | Tag | PostFormat;
+export type MenuItemObjectUnion = Post | Page | Category | Tag;
 
 /** Connection between the MenuItem type and the Menu type */
 export type MenuItemToMenuConnectionEdge = {
@@ -7938,8 +7902,6 @@ export enum UserRoleEnum {
   Author = 'AUTHOR',
   Contributor = 'CONTRIBUTOR',
   Editor = 'EDITOR',
-  SeoEditor = 'SEO_EDITOR',
-  SeoManager = 'SEO_MANAGER',
   Subscriber = 'SUBSCRIBER',
 }
 
@@ -8099,16 +8061,6 @@ export type RootMutation = {
   /** @deprecated  */
   increaseCount?: Maybe<Scalars['Int']>;
   /**
-   * The payload for the login mutation
-   * @deprecated
-   */
-  login?: Maybe<LoginPayload>;
-  /**
-   * The payload for the refreshJwtAuthToken mutation
-   * @deprecated
-   */
-  refreshJwtAuthToken?: Maybe<RefreshJwtAuthTokenPayload>;
-  /**
    * The payload for the registerUser mutation
    * @deprecated
    */
@@ -8258,16 +8210,6 @@ export type RootMutationDeleteUserArgs = {
 /** The root mutation */
 export type RootMutationIncreaseCountArgs = {
   count?: Maybe<Scalars['Int']>;
-};
-
-/** The root mutation */
-export type RootMutationLoginArgs = {
-  input: LoginInput;
-};
-
-/** The root mutation */
-export type RootMutationRefreshJwtAuthTokenArgs = {
-  input: RefreshJwtAuthTokenInput;
 };
 
 /** The root mutation */
@@ -8742,12 +8684,8 @@ export type CreateUserInput = {
   nickname?: Maybe<Scalars['String']>;
   /** A string that contains the plain text password for the user. */
   password?: Maybe<Scalars['String']>;
-  /** If true, this will refresh the users JWT secret. */
-  refreshJwtUserSecret?: Maybe<Scalars['Boolean']>;
   /** The date the user registered. Format is Y-m-d H:i:s. */
   registered?: Maybe<Scalars['String']>;
-  /** If true, this will revoke the users JWT secret. If false, this will unrevoke the JWT secret AND issue a new one. To revoke, the user must have proper capabilities to edit users JWT secrets. */
-  revokeJwtUserSecret?: Maybe<Scalars['Boolean']>;
   /** A string for whether to enable the rich editor or not. False if not empty. */
   richEditing?: Maybe<Scalars['String']>;
   /** An array of roles to be assigned to the user. */
@@ -8971,56 +8909,6 @@ export type DeleteUserPayload = {
   user?: Maybe<User>;
 };
 
-/** Input for the login mutation */
-export type LoginInput = {
-  clientMutationId: Scalars['String'];
-  /** The plain-text password for the user logging in. */
-  password: Scalars['String'];
-  /** The username used for login. Typically a unique or email address depending on specific configuration */
-  username: Scalars['String'];
-};
-
-/** The payload for the login mutation */
-export type LoginPayload = {
-  __typename?: 'LoginPayload';
-  /**
-   * JWT Token that can be used in future requests for Authentication
-   * @deprecated
-   */
-  authToken?: Maybe<Scalars['String']>;
-  /** @deprecated  */
-  clientMutationId: Scalars['String'];
-  /**
-   * A JWT token that can be used in future requests to get a refreshed jwtAuthToken. If the refresh token used in a request is revoked or otherwise invalid, a valid Auth token will NOT be issued in the response headers.
-   * @deprecated
-   */
-  refreshToken?: Maybe<Scalars['String']>;
-  /**
-   * The user that was logged in
-   * @deprecated
-   */
-  user?: Maybe<User>;
-};
-
-/** Input for the refreshJwtAuthToken mutation */
-export type RefreshJwtAuthTokenInput = {
-  clientMutationId: Scalars['String'];
-  /** A valid, previously issued JWT refresh token. If valid a new Auth token will be provided. If invalid, expired, revoked or otherwise invalid, a new AuthToken will not be provided. */
-  jwtRefreshToken: Scalars['String'];
-};
-
-/** The payload for the refreshJwtAuthToken mutation */
-export type RefreshJwtAuthTokenPayload = {
-  __typename?: 'RefreshJwtAuthTokenPayload';
-  /**
-   * JWT Token that can be used in future requests for Authentication
-   * @deprecated
-   */
-  authToken?: Maybe<Scalars['String']>;
-  /** @deprecated  */
-  clientMutationId: Scalars['String'];
-};
-
 /** Input for the registerUser mutation */
 export type RegisterUserInput = {
   /** User's AOL IM account. */
@@ -9046,12 +8934,8 @@ export type RegisterUserInput = {
   nickname?: Maybe<Scalars['String']>;
   /** A string that contains the plain text password for the user. */
   password?: Maybe<Scalars['String']>;
-  /** If true, this will refresh the users JWT secret. */
-  refreshJwtUserSecret?: Maybe<Scalars['Boolean']>;
   /** The date the user registered. Format is Y-m-d H:i:s. */
   registered?: Maybe<Scalars['String']>;
-  /** If true, this will revoke the users JWT secret. If false, this will unrevoke the JWT secret AND issue a new one. To revoke, the user must have proper capabilities to edit users JWT secrets. */
-  revokeJwtUserSecret?: Maybe<Scalars['Boolean']>;
   /** A string for whether to enable the rich editor or not. False if not empty. */
   richEditing?: Maybe<Scalars['String']>;
   /** A string that contains the user's username. */
@@ -9389,12 +9273,8 @@ export type UpdateUserInput = {
   nickname?: Maybe<Scalars['String']>;
   /** A string that contains the plain text password for the user. */
   password?: Maybe<Scalars['String']>;
-  /** If true, this will refresh the users JWT secret. */
-  refreshJwtUserSecret?: Maybe<Scalars['Boolean']>;
   /** The date the user registered. Format is Y-m-d H:i:s. */
   registered?: Maybe<Scalars['String']>;
-  /** If true, this will revoke the users JWT secret. If false, this will unrevoke the JWT secret AND issue a new one. To revoke, the user must have proper capabilities to edit users JWT secrets. */
-  revokeJwtUserSecret?: Maybe<Scalars['Boolean']>;
   /** A string for whether to enable the rich editor or not. False if not empty. */
   richEditing?: Maybe<Scalars['String']>;
   /** An array of roles to be assigned to the user. */
