@@ -1,11 +1,10 @@
 import Container from '@components/Container';
 import cn from 'classnames';
-import { ReactElement } from 'react';
 
 interface Props {
   preview: boolean;
 }
-export default function Alert({ preview }: Props): ReactElement<Props> {
+const Alert: React.FC<Props> = ({ preview }) => {
   return (
     <div
       className={cn('border-b', {
@@ -42,4 +41,5 @@ export default function Alert({ preview }: Props): ReactElement<Props> {
       </Container>
     </div>
   );
-}
+};
+export default Alert;

@@ -1,3 +1,5 @@
-export default function Container({ children }: any) {
-  return <div className="container mx-auto px-5">{children}</div>;
-}
+const Container: React.FC = ({ children }) => (
+  <div className="container mx-auto px-5">{children}</div>
+);
+
+export default Container;

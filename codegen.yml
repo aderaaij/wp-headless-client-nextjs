@@ -1,4 +1,4 @@
-schema: http://loc.cfye.com/wp/graphql
+schema: ${WORDPRESS_API_URL}
 documents:
   - './src/graphql/**/*.ts'
 generates:

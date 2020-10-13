@@ -1,6 +1,6 @@
 import Container from '@components/Container';
 
-export default function Footer() {
+const Footer: React.FC = () => {
   return (
     <footer className="bg-accent-1 border-t border-accent-2">
       <Container>
@@ -26,4 +26,5 @@ export default function Footer() {
       </Container>
     </footer>
   );
-}
+};
+export default Footer;

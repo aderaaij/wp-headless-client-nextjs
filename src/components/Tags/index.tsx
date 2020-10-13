@@ -4,7 +4,7 @@ interface Props {
   tags: PostToTagConnection;
 }
 
-export default function Tags({ tags }: Props) {
+const Tags: React.FC<Props> = ({ tags }) => {
   return (
     <div className="max-w-2xl mx-auto">
       <p className="mt-8 text-lg font-bold">
@@ -17,4 +17,5 @@ export default function Tags({ tags }: Props) {
       </p>
     </div>
   );
-}
+};
+export default Tags;

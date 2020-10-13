@@ -1,4 +1,4 @@
-export const postBySlug = (isRevision = false) => `
+export const postBySlug = (isRevision = false): string => `
 query PostBySlug($id: ID!, $idType: PostIdType!) {
   post(id: $id, idType: $idType) {
     ...PostFields

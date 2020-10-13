@@ -4,10 +4,9 @@ import Meta from '@components/Meta';
 
 interface Props {
   preview: boolean;
-  children: any;
 }
 
-export default function Layout({ preview, children }: Props) {
+const Layout: React.FC<Props> = ({ preview, children }) => {
   return (
     <>
       <Meta />
@@ -18,4 +17,5 @@ export default function Layout({ preview, children }: Props) {
       <Footer />
     </>
   );
-}
+};
+export default Layout;

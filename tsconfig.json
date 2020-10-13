@@ -15,7 +15,7 @@
     "skipLibCheck": true,
     "esModuleInterop": true,
     "baseUrl": "./src/",
-    "typeRoots": ["./node_modules/@types", "./types", "./next-env.d.ts"],
+    "typeRoots": ["./node_modules/@types", "./typings", "./next-env.d.ts"],
     "lib": ["dom", "es2017"],
     "paths": {
       "@components/*": ["components/*"],
