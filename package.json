@@ -7,7 +7,8 @@
     "start": "next start",
     "generate": "DOTENV_CONFIG_PATH=.env.local graphql-codegen -r dotenv/config",
     "generate:watch": "graphql-codegen -w -r dotenv/config",
-    "lint": "eslint --fix ."
+    "lint": "eslint --fix .",
+    "prettier": "prettier --write"
   },
   "husky": {
     "hooks": {
@@ -15,7 +16,7 @@
     }
   },
   "lint-staged": {
-    "*.ts?(x)": "yarn lint"
+    "*.ts?(x)": ["yarn lint", "yarn prettier"]
   },
   "dependencies": {
     "classnames": "2.2.6",
