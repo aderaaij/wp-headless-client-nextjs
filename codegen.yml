@@ -6,7 +6,6 @@ generates:
     plugins:
       - typescript
     config:
-      enumsAsTypes: true
 pluckConfig:
   gqlMagicComment: GraphQL
   globalGqlIdentifierName:
