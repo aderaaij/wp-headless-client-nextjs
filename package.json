@@ -8,6 +8,7 @@
     "generate": "DOTENV_CONFIG_PATH=.env.local graphql-codegen -r dotenv/config",
     "generate:watch": "graphql-codegen -w -r dotenv/config",
     "lint": "eslint --fix .",
+    "type-check": "tsc --noEmit",
     "prettier": "prettier --write"
   },
   "husky": {
@@ -17,6 +18,7 @@
   },
   "lint-staged": {
     "*.ts?(x)": [
+      "yarn type-check",
       "yarn lint",
       "yarn prettier"
     ]
