@@ -8,6 +8,13 @@ export const PostFields = /* GraphQL */ `
       node {
         sourceUrl
         id
+        srcSet
+        sizes
+        mediaDetails {
+          sizes {
+            sourceUrl
+          }
+        }
       }
     }
     author {

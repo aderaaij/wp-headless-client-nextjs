@@ -43,7 +43,9 @@ const Post: React.FC<Props> = ({ post, posts, preview }: Props) => {
                 </title>
                 <meta
                   property="og:image"
-                  content={post.featuredImage?.node?.sourceUrl}
+                  content={
+                    post.featuredImage?.node?.mediaDetails?.sizes[1].sourceUrl
+                  }
                 />
               </Head>
               <PostHeader

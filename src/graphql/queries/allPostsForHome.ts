@@ -10,7 +10,13 @@ export const allPostsForHome = /* GraphQL */ `
           featuredImage {
             node {
               sourceUrl
+              srcSet
               id
+              mediaDetails {
+                sizes {
+                  sourceUrl
+                }
+              }
             }
           }
           author {

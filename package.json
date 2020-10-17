@@ -13,12 +13,11 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "yarn type-check && lint-staged"
     }
   },
   "lint-staged": {
     "*.ts?(x)": [
-      "yarn type-check",
       "yarn lint",
       "yarn prettier"
     ]
