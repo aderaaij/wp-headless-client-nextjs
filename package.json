@@ -5,8 +5,8 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "generate": "DOTENV_CONFIG_PATH=.env.local graphql-codegen -r dotenv/config",
-    "generate:watch": "graphql-codegen -w -r dotenv/config",
+    "generate:codegen": "DOTENV_CONFIG_PATH=.env.local graphql-codegen -r dotenv/config",
+    "generate:codegen:watch": "graphql-codegen -w -r dotenv/config",
     "lint": "eslint --fix .",
     "type-check": "tsc --noEmit",
     "prettier": "prettier --write"
