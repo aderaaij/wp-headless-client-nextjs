@@ -11,7 +11,7 @@ interface Props {
 const CoverImage: React.FC<Props> = ({ title, coverImage, slug }) => {
   const image = (
     <img
-      src={coverImage?.mediaDetails.sizes[1].sourceUrl}
+      src={coverImage?.sourceUrl}
       srcSet={coverImage?.srcSet}
       className={cn('shadow-small', {
         'hover:shadow-medium transition-shadow duration-200': slug,
