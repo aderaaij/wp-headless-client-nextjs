@@ -1,5 +1,5 @@
 {
-  "name": "nextjs-wordpress-ts",
+  "name": "wp-headless-client-nextjs",
   "version": "1.0.0",
   "scripts": {
     "dev": "next",
@@ -16,7 +16,10 @@
     }
   },
   "lint-staged": {
-    "*.ts?(x)": ["yarn lint", "yarn prettier"]
+    "*.ts?(x)": [
+      "yarn lint",
+      "yarn prettier"
+    ]
   },
   "dependencies": {
     "classnames": "2.2.6",
