@@ -13,7 +13,6 @@ const CoverImage: React.FC<Props> = ({ title, coverImage, slug }) => {
     <img
       src={coverImage?.mediaDetails.sizes[1].sourceUrl}
       srcSet={coverImage?.srcSet}
-      sizes={coverImage?.sizes}
       className={cn('shadow-small', {
         'hover:shadow-medium transition-shadow duration-200': slug,
       })}
