@@ -26,9 +26,9 @@
     "classnames": "2.2.6",
     "date-fns": "^2.16.1",
     "eslint": "^7.11.0",
-    "next": "latest",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "next": "^10.0.1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
   },
   "devDependencies": {
     "@graphql-codegen/cli": "^1.17.10",
@@ -48,7 +48,7 @@
     "graphql-tag": "^2.11.0",
     "husky": "^4.3.0",
     "lint-staged": "^10.4.0",
-    "postcss-flexbugs-fixes": "4.2.1",
+    "postcss-flexbugs-fixes": "^5.0.1",
     "postcss-preset-env": "^6.7.0",
     "prettier": "^2.1.2",
     "tailwindcss": "^1.4.6",

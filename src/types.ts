@@ -4125,9 +4125,9 @@ export enum MediaItemSizeEnum {
   /** MediaItem with the thumbnail size */
   Thumbnail = 'THUMBNAIL',
   /** MediaItem with the 1536x1536 size */
-  _1536X1536 = '_1536X1536',
+  '1536X1536' = '_1536X1536',
   /** MediaItem with the 2048x2048 size */
-  _2048X2048 = '_2048X2048',
+  '2048X2048' = '_2048X2048',
 }
 
 /** Connection between the ContentNode type and the User type */
@@ -4234,6 +4234,14 @@ export type MediaSize = {
    * @deprecated
    */
   width?: Maybe<Scalars['String']>;
+};
+
+/** The template assigned to a node of content */
+export type ContentTemplate = {
+  /** The file the template uses */
+  templateFile?: Maybe<Scalars['String']>;
+  /** The name of the template */
+  templateName?: Maybe<Scalars['String']>;
 };
 
 /** Arguments for filtering the ContentNodeToTermNodeConnection connection */
@@ -10257,11 +10265,3 @@ export type MenuItemsWhereArgs = {
 export type PostObjectUnion = Post | Page | MediaItem;
 
 export type TermObjectUnion = Category | Tag | PostFormat;
-
-/** The template assigned to a node of content */
-export type ContentTemplate = {
-  /** The file the template uses */
-  templateFile?: Maybe<Scalars['String']>;
-  /** The name of the template */
-  templateName?: Maybe<Scalars['String']>;
-};
