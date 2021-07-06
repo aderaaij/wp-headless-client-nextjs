@@ -5,9 +5,4 @@ generates:
   ./src/types.ts:
     plugins:
       - typescript
-    config:
-pluckConfig:
-  gqlMagicComment: GraphQL
-  globalGqlIdentifierName:
-    - gql
-    - graphql
+      - typescript-operations
